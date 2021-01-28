@@ -2,10 +2,41 @@
 
 点云分割论文2017 Fast segmentation of 3d point clouds: A paradigm on lidar data for autonomous vehicle applications
 
+## Introduction
+
+
+
+
+## Dataset bag
+
+数据集已处理好，放在百度网盘上，需要自己下载
+
+* kitti_2011_09_26_drive_0005_synced.bag
+* 链接: https://pan.baidu.com/s/1sYWHzF11RpyEW25cQ_iNGA  密码: b6pd
 
 ## plane_fit_ground_filter
 
 > 参考：https://github.com/AbangLZU/plane_fit_ground_filter
+
+
+
+### Run(Terminal)
+
+```
+# Terminal1
+roscore
+
+# Terminal2  注意修改bag路径
+rosbag play ~/data/KittiRawdata/2011_09_26_drive_0005_sync/kitti_2011_09_26_drive_0005_synced.bag --loop
+
+# Terminal3
+roslaunch plane_ground_filter plane_ground_filter.launch
+```
+
+
+
+
+### Result
 
 
 ## Run_based_segmentation
@@ -39,15 +70,24 @@ sudo apt-get install ros-kinetic-velodyne
 
 ```
 
-### Run
+### Run(Terminal)
 
-```bash
-$ catkin_make
-$ rosrun points_preprocessor_usi groundplanfit
-$ rosrun points_preprocessor_usi scanlinerun
+```
+catkin_make # 编译
+
+# Terminal1  注意修改bag路径
+rosrun points_preprocessor_usi groundplanfit
+
+# Terminal2
+rosrun points_preprocessor_usi scanlinerun
 ```
 
+
 And cluster point cloud will be published as `cluster` with different label.
+
+### Result
+
+![图片](https://cdn.nlark.com/yuque/0/2021/png/232596/1611823927608-e23ab8dd-cc9e-470a-8ef6-efad1fd086a6.png)
 
 
 ## License
