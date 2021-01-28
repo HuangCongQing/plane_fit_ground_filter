@@ -13,7 +13,7 @@ PlaneGroundFilter::PlaneGroundFilter(ros::NodeHandle &nh)
 {
     std::string input_topic;
     nh.getParam("input_topic", input_topic);
-    sub_point_cloud_ = nh.subscribe("/velodyne_points", 10, &PlaneGroundFilter::point_cb, this);
+    sub_point_cloud_ = nh.subscribe("/kitti/velo/pointcloud", 10, &PlaneGroundFilter::point_cb, this); // 输入topoc   /velodyne_points   OR  /kitti/velo/pointcloud
 
     // init publisher
     std::string no_ground_topic, ground_topic, all_points_topic;

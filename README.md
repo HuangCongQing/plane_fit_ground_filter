@@ -1,4 +1,4 @@
-# plane_fit_ground_filter
+## plane_fit_ground_filter
 
 点云分割论文2017 Fast segmentation of 3d point clouds: A paradigm on lidar data for autonomous vehicle applications
 
@@ -14,7 +14,7 @@
 
 
 
-## Requirement
+### Requirement
 
 * [PCL](https://github.com/PointCloudLibrary/pcl)
 * [ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu)
@@ -29,6 +29,15 @@ sudo apt-get install ros-melodic-velodyne
 sudo apt-get install ros-kinetic-velodyne
 ```
 
+
+**修改输入Topic**
+
+> Run_based_segmentation/nodes/ground_filter/groundplanfit.cpp
+
+```
+    node_handle_.param<std::string>("point_topic", point_topic_, " /kitti/velo/pointcloud");  // 输入topoc   /velodyne_points   OR  /kitti/velo/pointcloud
+
+```
 
 ### Run
 
