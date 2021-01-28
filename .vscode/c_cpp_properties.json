@@ -1,0 +1,17 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/hcq/github/ws_linefit_ground/devel/include",
+        "/opt/ros/melodic/include",
+        "/home/hcq/github/ws_paradigm_ground/src/plane_fit_ground_filter/include",
+        "/usr/include"
+      ],
+      "name": "Linux"
+    }
+  ]
+}
