@@ -2,7 +2,7 @@
 
 点云分割论文2017 Fast segmentation of 3d point clouds: A paradigm on lidar data for autonomous vehicle applications
 
-## Introduction
+@[双愚](https://github.com/HuangCongQing/) , 若fork或star请注明来源
 
 
 ```
@@ -13,6 +13,11 @@
   year={2017},
 }
 ```
+
+## Introduction
+
+笔记：https://www.yuque.com/huangzhongqing/ngixrc/lum14t
+
 
 
 ## Dataset bag
@@ -25,8 +30,6 @@
 ## plane_fit_ground_filter
 
 > 参考：https://github.com/AbangLZU/plane_fit_ground_filter
-
-
 
 ### Run(Terminal)
 
@@ -41,9 +44,6 @@ rosbag play ~/data/KittiRawdata/2011_09_26_drive_0005_sync/kitti_2011_09_26_driv
 roslaunch plane_ground_filter plane_ground_filter.launch
 ```
 
-
-
-
 ### Result
 
 ![result](https://cdn.nlark.com/yuque/0/2021/png/232596/1611824743464-99d29a4e-e336-492d-8ebf-ae99ec28a89e.png)
@@ -51,8 +51,6 @@ roslaunch plane_ground_filter plane_ground_filter.launch
 ## Run_based_segmentation
 
 > 参考：https://github.com/VincentCheungM/Run_based_segmentation
-
-
 
 ### Requirement
 
@@ -68,7 +66,6 @@ sudo apt-get install ros-melodic-velodyne
 # kinetic
 sudo apt-get install ros-kinetic-velodyne
 ```
-
 
 **修改输入Topic**
 
@@ -91,13 +88,11 @@ rosrun points_preprocessor_usi groundplanfit
 rosrun points_preprocessor_usi scanlinerun
 ```
 
-
 And cluster point cloud will be published as `cluster` with different label.
 
 ### Result
 
 ![图片](https://cdn.nlark.com/yuque/0/2021/png/232596/1611823927608-e23ab8dd-cc9e-470a-8ef6-efad1fd086a6.png)
-
 
 ## License
 
