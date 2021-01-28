@@ -5,6 +5,14 @@
 ## Introduction
 
 
+```
+@inproceedings{Zermas2017Fast,
+  title={Fast segmentation of 3D point clouds: A paradigm on LiDAR data for autonomous vehicle applications},
+  author={Zermas, Dimitris and Izzat, Izzat and Papanikolopoulos, Nikolaos},
+  booktitle={IEEE International Conference on Robotics and Automation},
+  year={2017},
+}
+```
 
 
 ## Dataset bag
@@ -38,6 +46,7 @@ roslaunch plane_ground_filter plane_ground_filter.launch
 
 ### Result
 
+![result](https://cdn.nlark.com/yuque/0/2021/png/232596/1611824743464-99d29a4e-e336-492d-8ebf-ae99ec28a89e.png)
 
 ## Run_based_segmentation
 
