@@ -31,6 +31,19 @@
 
 > 参考：https://github.com/AbangLZU/plane_fit_ground_filter
 
+### 修改配置文件
+
+举例：修改输入topic
+
+```bash
+cd plane_fit_ground_filter/plane_ground_filter.launch
+
+#第2行 修改 value="/kitti/velo/pointcloud"  修改你的雷达点云话题
+<arg name="input_topic" default="/kitti/velo/pointcloud" />     <!-- 输入topic   原始 default="/velodyne_points"    OR /kitti/velo/pointcloud-->   
+
+```
+
+
 ### Run(Terminal)
 
 ```
@@ -75,6 +88,19 @@ sudo apt-get install ros-kinetic-velodyne
     node_handle_.param<std::string>("point_topic", point_topic_, " /kitti/velo/pointcloud");  // 输入topoc   /velodyne_points   OR  /kitti/velo/pointcloud
 
 ```
+
+### 修改配置文件
+
+举例：修改输入topic
+
+```bash
+cd Run_based_segmentation/nodes/ground_filter/groundplanfit.cpp
+
+#第129行 修改  node_handle_.param<std::string>("point_topic", point_topic_, "/kitti/velo/pointcloud");  
+node_handle_.param<std::string>("point_topic", point_topic_, "/kitti/velo/pointcloud");  // 输入topoc   /velodyne_points   OR  /kitti/velo/pointcloud
+
+```
+
 
 ### Run(Terminal)
 
