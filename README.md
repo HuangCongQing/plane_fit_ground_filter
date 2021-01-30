@@ -4,7 +4,6 @@
 
 @[双愚](https://github.com/HuangCongQing/) , 若fork或star请注明来源
 
-
 ```
 @inproceedings{Zermas2017Fast,
   title={Fast segmentation of 3D point clouds: A paradigm on LiDAR data for autonomous vehicle applications},
@@ -18,14 +17,35 @@
 
 笔记：https://www.yuque.com/huangzhongqing/ngixrc/lum14t
 
-
-
 ## Dataset bag
 
 数据集已处理好，放在百度网盘上，需要自己下载
 
 * kitti_2011_09_26_drive_0005_synced.bag
 * 链接: https://pan.baidu.com/s/1sYWHzF11RpyEW25cQ_iNGA  密码: b6pd
+
+## 编译
+
+
+将本仓库下的2个文件夹`plane_fit_ground_filter&Run_based_segmentation`移动到catkin_wp/src下，然后执行下面操作
+
+```shell
+// 创建环境变量 src中运行
+mkdir -p catkin_wp/src
+cd catkin_wp/src
+catkin_init_workspace
+
+// 编译（需要回到工作空间catkin_wp）
+cd ..
+catkin_make  // 产生build和devel文件夹
+
+
+//设置环境变量，找到src里的功能包(每个新的shell窗口都要执行以下source devel/setup.bash)
+source devel/setup.bash  // 不同shell，不同哦.sh  .zsh           通过设置gedit ~/.zshrc，不用每次都source
+```
+
+详情可参考：https://www.yuque.com/docs/share/e59d5c91-b46d-426a-9957-cd262f5fc241?# 《09.创建工作空间与功能包※※※》
+
 
 ## plane_fit_ground_filter
 
@@ -42,7 +62,6 @@ cd plane_fit_ground_filter/plane_ground_filter.launch
 <arg name="input_topic" default="/kitti/velo/pointcloud" />     <!-- 输入topic   原始 default="/velodyne_points"    OR /kitti/velo/pointcloud-->   
 
 ```
-
 
 ### Run(Terminal)
 
@@ -100,7 +119,6 @@ cd Run_based_segmentation/nodes/ground_filter/groundplanfit.cpp
 node_handle_.param<std::string>("point_topic", point_topic_, "/kitti/velo/pointcloud");  // 输入topoc   /velodyne_points   OR  /kitti/velo/pointcloud
 
 ```
-
 
 ### Run(Terminal)
 
