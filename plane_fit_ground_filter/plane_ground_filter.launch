@@ -1,5 +1,7 @@
 <launch>
-    <arg name="input_topic" default="/kitti/velo/pointcloud" />     <!-- 输入topic   原始 default="/velodyne_points"    OR /kitti/velo/pointcloud-->   
+<!-- 输入topic   原始 default="/velodyne_points"    OR /kitti/velo/pointcloud--> 
+    <!-- <arg name="input_topic" default="/kitti/velo/pointcloud" />        -->
+    <arg name="input_topic" default="/ouster16_only" />       
     <arg name="no_ground_point_topic" default="/points_no_ground"/>
     <arg name="ground_point_topic" default="/points_ground"/>
     <arg name="all_points_topic" default="/all_points"/>
