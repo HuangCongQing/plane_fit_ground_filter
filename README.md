@@ -26,7 +26,6 @@
 
 ## 编译
 
-
 将本仓库下的2个文件夹`plane_fit_ground_filter&Run_based_segmentation`移动到catkin_wp/src下，然后执行下面操作
 
 ```shell
@@ -46,22 +45,27 @@ source devel/setup.bash  // 不同shell，不同哦.sh  .zsh           通过设
 
 详情可参考：https://www.yuque.com/docs/share/e59d5c91-b46d-426a-9957-cd262f5fc241?# 《09.创建工作空间与功能包※※※》
 
-
 ## plane_fit_ground_filter
 
 > 参考：https://github.com/AbangLZU/plane_fit_ground_filter
 
 ### 修改配置文件
 
-举例：修改输入topic
+
+举例：修改输入topic,需要修改两处
 
 ```bash
+cd plane_fit_ground_filter/src/plane_ground_filter_core.cpp
+# 16行  需要修改 "/kitti/velo/pointcloud"
+sub_point_cloud_ = nh.subscribe("/kitti/velo/pointcloud", 10, &PlaneGroundFilter::point_cb, this)
+
 cd plane_fit_ground_filter/plane_ground_filter.launch
 
 #第2行 修改 value="/kitti/velo/pointcloud"  修改你的雷达点云话题
 <arg name="input_topic" default="/kitti/velo/pointcloud" />     <!-- 输入topic   原始 default="/velodyne_points"    OR /kitti/velo/pointcloud-->   
 
 ```
+
 
 ### Run(Terminal)
 
