@@ -1,5 +1,7 @@
 #include "plane_ground_filter_core.h"
-
+#include <chrono>     // must
+using namespace std;
+using namespace chrono;// must
 /*
     @brief Compare function to sort points. Here use z axis.
     @return z-axis accent
@@ -179,8 +181,10 @@ void PlaneGroundFilter::post_process(const pcl::PointCloud<VPoint>::Ptr in, cons
     remove_close_far_pt(cliped_pc_ptr, out);
 }
 
+// 输入topic处理函数===============================================================================
 void PlaneGroundFilter::point_cb(const sensor_msgs::PointCloud2ConstPtr &in_cloud_ptr)
 {
+     auto t1 = std::chrono::steady_clock::now();
     // 1.Msg to pointcloud
     pcl::PointCloud<VPoint> laserCloudIn;
     pcl::fromROSMsg(*in_cloud_ptr, laserCloudIn);
@@ -246,12 +250,12 @@ void PlaneGroundFilter::point_cb(const sensor_msgs::PointCloud2ConstPtr &in_clou
             if (result[r] < th_dist_d_)
             {
                 g_all_pc->points[r].label = 1u; // means ground
-                g_ground_pc->points.push_back(laserCloudIn_org[r]);
+                g_ground_pc->points.push_back(laserCloudIn_org[r]);  // 地面点
             }
             else
             {
                 g_all_pc->points[r].label = 0u; // means not ground and non clusterred
-                g_not_ground_pc->points.push_back(laserCloudIn_org[r]);
+                g_not_ground_pc->points.push_back(laserCloudIn_org[r]);  // 非地面点
             }
         }
     }
@@ -261,14 +265,14 @@ void PlaneGroundFilter::point_cb(const sensor_msgs::PointCloud2ConstPtr &in_clou
     
     // ROS_INFO_STREAM("origin: "<<g_not_ground_pc->points.size()<<" post_process: "<<final_no_ground->points.size());
 
-    // publish ground points
+    // publish ground points  地面点
     sensor_msgs::PointCloud2 ground_msg;
     pcl::toROSMsg(*g_ground_pc, ground_msg);
     ground_msg.header.stamp = in_cloud_ptr->header.stamp;
     ground_msg.header.frame_id = in_cloud_ptr->header.frame_id;
     pub_ground_.publish(ground_msg);
 
-    // publish not ground points
+    // publish not ground points  非地面点
     sensor_msgs::PointCloud2 groundless_msg;
     pcl::toROSMsg(*final_no_ground, groundless_msg);
     groundless_msg.header.stamp = in_cloud_ptr->header.stamp;
@@ -282,4 +286,8 @@ void PlaneGroundFilter::point_cb(const sensor_msgs::PointCloud2ConstPtr &in_clou
     all_points_msg.header.frame_id = in_cloud_ptr->header.frame_id;
     pub_all_points_.publish(all_points_msg);
     g_all_pc->clear();
+
+   auto t2 = std::chrono::steady_clock::now();
+  double dr_ms=std::chrono::duration<double,std::milli>(t2-t1).count();   //这一帧处理时间  毫秒ms
+  std::cout<<"## Extract ground time: "<<dr_ms<<" ms"<<std::endl;
 }

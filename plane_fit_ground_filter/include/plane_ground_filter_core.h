@@ -32,6 +32,7 @@ struct PointXYZIR
 
 }; // namespace velodyne_pointcloud
 
+// 自定义类型
 POINT_CLOUD_REGISTER_POINT_STRUCT(velodyne_pointcloud::PointXYZIR,
                                   (float, x, x)(float, y, y)(float, z, z)(float, intensity, intensity)(uint16_t, ring, ring))
 
@@ -51,7 +52,7 @@ struct PointXYZIRL
 }; // namespace plane_ground_filter
 
 #define SLRPointXYZIRL plane_ground_filter::PointXYZIRL
-#define VPoint velodyne_pointcloud::PointXYZIR
+#define VPoint velodyne_pointcloud::PointXYZIR  // 自定义类型
 #define RUN pcl::PointCloud<SLRPointXYZIRL>
 
 // Register custom point struct according to PCL
