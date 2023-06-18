@@ -13,6 +13,8 @@
 }
 ```
 
+**相关算法（带中文详细注解）：https://github.com/HuangCongQing/linefit_ground_segmentation_details**
+
 ## Introduction
 
 笔记：https://www.yuque.com/huangzhongqing/ngixrc/lum14t
